@@ -38,8 +38,10 @@ func main() {
 		return c.SendString("Hello World!")
 	})
 
-	app.Get("/user", handleUser)
-	app.Post("/user", handleCreateUser)
+	userGroup := app.Group("/user")
+
+	userGroup.Get("/user", handleUser)
+	userGroup.Post("/user", handleCreateUser)
 
 	app.Listen(":3000")
 }
